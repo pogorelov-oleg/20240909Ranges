@@ -49,20 +49,20 @@ public class Ranges {
     }
 
     /**
-     * Метод проверяет, пересекаются ли значения двух диапазонов. Результат выводится в консоль.
+     * Метод проверяет, пересекаются ли значения двух диапазонов. Результат возвращается в виде массива.
+     * Если значения не пересекаются, возвращается {-1}.
      */
-    public static String checkIfValuesIntersect(int[] rangeA, int[] rangeB) {
+    public static int[] checkIfValuesIntersect(int[] rangeA, int[] rangeB) {
         int min = Math.max(rangeA[0], rangeB[0]);
         int max = Math.min(rangeA[1], rangeB[1]);
-        StringBuilder sb = new StringBuilder();
 
-        if (min > max) return "Значения не пересекаются";
+        if (min > max) return new int[]{-1};
         else {
-            sb.append("Значения пересекаются: ");
-            for (int i = min; i <= max; i++) {
-                sb.append(i).append(" ");
+            int[] result = new int[max - min + 1];
+            for (int i = 0; i < result.length; i++) {
+                result[i] = i + min;
             }
-            return sb.toString();
+            return result;
         }
     }
 

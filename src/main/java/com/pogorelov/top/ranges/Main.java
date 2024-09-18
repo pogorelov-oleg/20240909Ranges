@@ -37,12 +37,30 @@ public class Main {
         Ranges.printAllRange(rangesArray[0]);
         Ranges.printAllRange(rangesArray[1]);
         //выводим результат сравнения
-        System.out.println(Ranges.checkIfValuesIntersect(rangesArray[0], rangesArray[1]) + "\n");
+        int[] valuesIntersect = Ranges.checkIfValuesIntersect(rangesArray[0], rangesArray[1]);
+        if (valuesIntersect[0] == -1)
+            System.out.println("Значения не пересекаются");
+        else {
+            System.out.print("Значения пересекаются: ");
+            for (int element : valuesIntersect) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
 
         //выводим в консоль два диапазона, которые собираемся сравнить
         Ranges.printAllRange(rangesArray[0]);
         Ranges.printAllRange(rangesArray[2]);
         //выводим результат сравнения
-        System.out.println(Ranges.checkIfValuesIntersect(rangesArray[0], rangesArray[2]));
+        valuesIntersect = Ranges.checkIfValuesIntersect(rangesArray[0], rangesArray[2]);
+        if (valuesIntersect[0] == -1)
+            System.out.println("Значения не пересекаются");
+        else {
+            System.out.print("Значения пересекаются: ");
+            for (int element : valuesIntersect) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
     }
 }

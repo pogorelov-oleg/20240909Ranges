@@ -24,8 +24,8 @@ public class RangesTest {
         int[] rangeB = {2, 5};
         int[] rangeC = {5, 7};
 
-        Assertions.assertEquals("Значения не пересекаются", Ranges.checkIfValuesIntersect(rangeA, rangeC));
-        Assertions.assertEquals("Значения пересекаются: 2 3 ", Ranges.checkIfValuesIntersect(rangeA, rangeB));
+        Assertions.assertArrayEquals(new int[]{-1}, Ranges.checkIfValuesIntersect(rangeA, rangeC));
+        Assertions.assertArrayEquals(new int[]{2, 3}, Ranges.checkIfValuesIntersect(rangeA, rangeB));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class RangesTest {
         int[] rangeB = {2, 5};
         int[] rangeC = {5, 7};
 
-        Assertions.assertNotEquals("Значения пересекаются: 2 3  ", Ranges.checkIfValuesIntersect(rangeA, rangeC));
-        Assertions.assertNotEquals("Значения не пересекаются", Ranges.checkIfValuesIntersect(rangeA, rangeB));
+        Assertions.assertNotEquals(new int[]{2, 3}, Ranges.checkIfValuesIntersect(rangeA, rangeC));
+        Assertions.assertNotEquals(new int[]{-1}, Ranges.checkIfValuesIntersect(rangeA, rangeB));
     }
 }
