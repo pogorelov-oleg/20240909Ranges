@@ -25,7 +25,7 @@ public class Main {
         System.out.println();
 
         //вывод информации (введенные диапазоны и их длина)
-        StringBuilder info = new StringBuilder("Объект имеет следующие диапазоны:\n");
+        StringBuilder info = new StringBuilder("Имеются следующие диапазоны:\n");
         for (int[] range : rangesArray) {
             info.append(range[0]).append(" ").append(range[1]).append(" (длина диапазона - ")
                     .append(Ranges.getRangeLength(range[0], range[1])).append(")").append("\n");
