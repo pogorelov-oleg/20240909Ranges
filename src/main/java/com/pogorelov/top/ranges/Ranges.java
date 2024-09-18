@@ -10,7 +10,7 @@ public class Ranges {
      */
     public static int[][] userInputRange(int nRange) {
         Scanner sc = new Scanner(System.in);
-        int[][] intRanges = new int[nRange][];
+        int[][] rangesArray = new int[nRange][];
         String userInput;
         int startValue;
         int finalValue;
@@ -26,22 +26,25 @@ public class Ranges {
                 startValue = Integer.parseInt(userInput.split("\\s+")[0]);
                 finalValue = Integer.parseInt(userInput.split("\\s+")[1]);
 
-                if (getRangeLength(startValue, finalValue) < 0) {
-                    System.out.println("ОШИБКА! Начало диапазона больше чем конец.\n");
+                if (getRangeLength(startValue, finalValue) == -1) {
+                    continue;
                 } else {
-                    intRanges[i] = new int[]{startValue, finalValue};
+                    rangesArray[i] = new int[]{startValue, finalValue};
                     i++;
                 }
             }
         }
-        return intRanges;
+        return rangesArray;
     }
 
     /**
      * Метод принимает принимает значения начала и конца диапазона и возвращает его длину.
      */
-    private static int getRangeLength(int startValue, int finalValue) {
-
+    public static int getRangeLength(int startValue, int finalValue) {
+        if (finalValue - startValue < 0) {
+            System.out.println("\"ОШИБКА! Начало диапазона больше чем конец.");
+            return -1;
+        }
         return finalValue - startValue + 1;
     }
 
@@ -61,19 +64,6 @@ public class Ranges {
             }
             return sb.toString();
         }
-    }
-
-    /**
-     * Выводит в консоль информацию о всех диапазонах, хранящихся в массиве с диапазонами.
-     * В скобках указывается длина каждого диапазона.
-     */
-    public static void showRangesInfo(int[][] intRanges) {
-        StringBuilder info = new StringBuilder("Объект имеет следующие диапазоны:\n");
-        for (int[] range : intRanges) {
-            info.append(range[0]).append(" ").append(range[1]).append(" (длина диапазона - ")
-                    .append(getRangeLength(range[0], range[1])).append(")").append("\n");
-        }
-        System.out.println(info);
     }
 
     /**
